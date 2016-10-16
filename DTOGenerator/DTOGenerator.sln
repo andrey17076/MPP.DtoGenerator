@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOGenerator", "DTOGenerator\DTOGenerator.csproj", "{BBBAF138-297C-47A6-A57B-27AFD8EEF319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOGenerationLibrary", "GenerationLibrary\DTOGenerationLibrary.csproj", "{A30EE6AF-0175-43A3-820A-E1347CE2D9F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBBAF138-297C-47A6-A57B-27AFD8EEF319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBBAF138-297C-47A6-A57B-27AFD8EEF319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBBAF138-297C-47A6-A57B-27AFD8EEF319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBBAF138-297C-47A6-A57B-27AFD8EEF319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A30EE6AF-0175-43A3-820A-E1347CE2D9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A30EE6AF-0175-43A3-820A-E1347CE2D9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A30EE6AF-0175-43A3-820A-E1347CE2D9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A30EE6AF-0175-43A3-820A-E1347CE2D9F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
