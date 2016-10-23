@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace DTOGenerationLibrary.ThreadPool
+namespace GenerationLibrary.Threading
 {
     internal class WorkItem
     {

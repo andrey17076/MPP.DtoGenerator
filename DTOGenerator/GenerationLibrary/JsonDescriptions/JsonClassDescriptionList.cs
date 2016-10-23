@@ -1,4 +1,4 @@
-﻿namespace DTOGenerationLibrary.JsonDescriptions
+﻿namespace GenerationLibrary.JsonDescriptions
 {
     public class JsonClassDescriptionList
     {

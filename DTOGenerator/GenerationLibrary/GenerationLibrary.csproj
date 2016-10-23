@@ -51,9 +51,13 @@
     <Compile Include="JsonDescriptions\JsonClassDescription.cs" />
     <Compile Include="JsonDescriptions\JsonClassDescriptionList.cs" />
     <Compile Include="JsonDescriptions\JsonPropertyDescription.cs" />
+    <Compile Include="TypeAssistance\TypeDescriptionLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThreadPool\ThreadPool.cs" />
-    <Compile Include="ThreadPool\WorkItem.cs" />
+    <Compile Include="Threading\ThreadPool.cs" />
+    <Compile Include="Threading\WorkItem.cs" />
+    <Compile Include="TypeAssistance\ITypeDescription.cs" />
+    <Compile Include="TypeAssistance\TypeDescription.cs" />
+    <Compile Include="TypeAssistance\TypeTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
