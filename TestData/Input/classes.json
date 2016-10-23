@@ -1,7 +1,7 @@
 {
-    "Classes": [
+    "ClassDescriptions": [
         {
-            "Name": "SomethingWicked",
+            "ClassName": "SomethingWicked",
             "Properties": [
                 {
                     "Name": "FirstProperty",
@@ -21,7 +21,7 @@
             ]
         },
         {
-            "Name": "SomethingGood",
+            "ClassName": "SomethingGood",
             "Properties": [
                 {
                     "Name": "First",
@@ -32,6 +32,10 @@
                     "Name": "Second",
                     "Type": "integer",
                     "Format": "int32",
+                },
+                {
+                    "Name": "Third",
+                    "Type": "boolean"
                 }
             ]
         }
