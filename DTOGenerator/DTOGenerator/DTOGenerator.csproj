@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenerationConfiguration.cs" />
+    <Compile Include="DtoClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,9 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenerationLibrary\DTOGenerationLibrary.csproj">
+    <ProjectReference Include="..\GenerationLibrary\GenerationLibrary.csproj">
       <Project>{a30ee6af-0175-43a3-820a-e1347ce2d9f8}</Project>
-      <Name>DTOGenerationLibrary</Name>
+      <Name>GenerationLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
