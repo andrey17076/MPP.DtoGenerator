@@ -7,9 +7,9 @@ namespace GenerationLibrary.Threading
     internal class ThreadPool : IDisposable
     {
         private readonly int _threadCount;
-        private readonly Queue<WorkItem> _queue = new Queue<WorkItem>();
+        private readonly Queue<WaitCallback> _queue = new Queue<WaitCallback>();
         private Thread[] _threads;
-        private int _threadsWaiting;
+        private int _threadsWaitingCount;
         private bool _isTerminated;
 
         internal ThreadPool(int threadCount)
@@ -19,20 +19,26 @@ namespace GenerationLibrary.Threading
 
         internal void QueueUserWorkItem(WaitCallback work)
         {
-            QueueUserWorkItem(work, null);
-        }
-
-        internal void QueueUserWorkItem(WaitCallback work, object obj)
-        {
-            var workItem = new WorkItem(work, obj);
-
             EnsureStarted();
 
             lock (_queue)
             {
-                _queue.Enqueue(workItem);
-                if (_threadsWaiting > 0)
+                _queue.Enqueue(work);
+                if (_threadsWaitingCount > 0)
                     Monitor.Pulse(_queue);
+            }
+        }
+
+        public void Dispose()
+        {
+            _isTerminated = true;
+            lock (_queue)
+            {
+                Monitor.PulseAll(_queue);
+            }
+            foreach (var thread in _threads)
+            {
+                thread.Join();
             }
         }
 
@@ -59,7 +65,7 @@ namespace GenerationLibrary.Threading
         {
             while (true)
             {
-                WorkItem workItem;
+                WaitCallback work;
                 lock (_queue)
                 {
                     if (_isTerminated)
@@ -67,35 +73,21 @@ namespace GenerationLibrary.Threading
 
                     while (_queue.Count == 0)
                     {
-                        _threadsWaiting++;
+                        _threadsWaitingCount++;
                         try
                         {
                             Monitor.Wait(_queue);
                         }
                         finally
                         {
-
-                            _threadsWaiting--;
+                            _threadsWaitingCount--;
                         }
                         if (_isTerminated)
                             return;
                     }
-                    workItem = _queue.Dequeue();
+                    work = _queue.Dequeue();
                 }
-                workItem.Invoke();
-            }
-        }
-
-        public void Dispose()
-        {
-            _isTerminated = true;
-            lock (_queue)
-            {
-                Monitor.PulseAll(_queue);
-            }
-            foreach (Thread t in _threads)
-            {
-                t.Join();
+                work.Invoke(null);
             }
         }
     }
