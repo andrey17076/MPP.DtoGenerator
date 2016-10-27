@@ -30,10 +30,10 @@ namespace GenerationLibrary.TypeAssistance
 
         public bool TryGetNetType(string type, string format, out Type netType)
         {
+            netType = null;
             Dictionary<string, Type> netTypes;
             if (_formats.TryGetValue(type, out netTypes))
                 return netTypes.TryGetValue(format, out netType);
-            netType = null;
             return false;
         }
 
