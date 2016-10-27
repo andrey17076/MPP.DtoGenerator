@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using GenerationLibrary;
 using GenerationLibrary.JsonDescriptions;
 using GenerationLibrary.TypeAssistance;
@@ -16,28 +16,24 @@ namespace DTOGenerator
             try
             {
                 LoadPlugins(args[2]);
+                var dtoWriter = new DtoWriter(args[1]);
                 var classDescriptionList = GetClassDescriptionList(args[0]);
-                GenerateDtoClasses(classDescriptionList).ForEach(dto => dto.Write(args[1]));
+                var dtoClassList = GenerateDtoClassList(classDescriptionList);
+                dtoClassList.ForEach(dto => dtoWriter.Write(dto));
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception);
             }
-            finally
-            {
-                Console.ReadKey();
-            }
         }
 
-        private static List<DtoClass> GenerateDtoClasses(JsonClassDescriptionList classDescriptionList)
+        private static List<DtoClass> GenerateDtoClassList(JsonClassDescriptionList classDescriptionList)
         {
             var generator = new Generator(
-                GenerationConfiguration.TaskCount, 
+                GenerationConfiguration.TaskCount,
                 GenerationConfiguration.NameSpaceName
             );
-            return classDescriptionList.ClassDescriptions
-                .Select(d => new DtoClass(d.ClassName, generator.GetDtoCode(d)))
-                .ToList();
+            return generator.GetDtoClassList(classDescriptionList);
         }
 
         private static void LoadPlugins(string pluginDirectory)
