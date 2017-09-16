@@ -1,0 +1,44 @@
+{
+    "ClassDescriptions": [
+        {
+            "ClassName": "SomethingWicked",
+            "Properties": [
+                {
+                    "Name": "FirstProperty",
+                    "Type": "integer",
+                    "Format": "int32"
+                },
+                {
+                    "Name": "SecondProperty",
+                    "Type": "integer",
+                    "Format": "int64"
+                },
+                {
+                    "Name": "ThirdProperty",
+                    "Type": "number",
+                    "Format": "float"
+                }
+            ]
+        },
+        {
+            "ClassName": "SomethingGood",
+            "Properties": [
+                {
+                    "Name": "First",
+                    "Type": "string",
+                    "Format": "string"
+                },
+                {
+                    "Name": "Second",
+                    "Type": "integer",
+                    "Format": "int32",
+                },
+                {
+                    "Name": "Third",
+                    "Type": "boolean",
+                    "Format": ""
+                }
+            ]
+        }
+    ]
+}
